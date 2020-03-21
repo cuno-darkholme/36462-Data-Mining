@@ -1,0 +1,37 @@
+---
+title: "hw4"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+```
+
+```{r}
+setwd("/Users/chenj/Desktop/36462/hw4")
+rawdata<-read.csv("compas_violence.csv")
+```
+
+**Question 4:**
+Load the COMPAS data.
+
+(a) Using the training data, create a plot of priors against age. Use shape or color to indicate whether the arrestee was a recidivist. Hint: Because many arrestees have the same combination of age and priors, you may want to use the jitter function to add a small amount of noise to the plot, so that diﬀerent people will show up as distinct points. (See the examples at the end of help(jitter).) 
+
+```{r}
+line <- scan("a.txt")
+training <- data.frame()
+testing <- data.frame()
+for (i in 1:nrow(rawdata)){
+  if (i %in% line){
+    training <- rbind(training, rawdata[i,])
+  } else {
+    testing <- rbind(testing, rawdata[i,])
+  }
+}
+```
+
+```{r}
+plot(training$priors_count, training$age)
+```
+
+
